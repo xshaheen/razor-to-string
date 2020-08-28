@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <LangVersion>latest</LangVersion>
+
+    <Title>Sharp.RazorToString</Title>
+    <AssemblyName>Sharp.RazorToString</AssemblyName>
+    <PackageId>Sharp.RazorToString</PackageId>
+    <Description>Render razor template to string.</Description>
+    <PackageTags>RazorToString, Razor, Email, RazorEmailTemplate, ToString</PackageTags>
+    <RepositoryUrl>https://github.com/xshaheen/RazorToString</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/xshaheen/RazorToString</PackageProjectUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <NeutralLanguage>en</NeutralLanguage>
+
+    <Company>xshaheen.com</Company>
+    <Authors>Mahmoud Shaheen</Authors>
+    <Copyright>Copyright (c) contributors 2020</Copyright>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor" Version="2.2.0"/>
+  </ItemGroup>
+</Project>

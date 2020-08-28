@@ -1,0 +1,17 @@
+﻿@model Sample.RazorEmailTemplate.Emails.EmailTemplate
+@{
+  Layout = "./_Layout.cshtml";
+  ViewBag.Title = "RazorToString";
+}
+
+@if (ViewBag.Message is {})
+{
+  <div>
+    ViewBag.Content: @ViewBag.Message
+  </div>
+}
+
+<div>
+  @Model.Content
+  <a href="@Model.Url"></a>
+</div>

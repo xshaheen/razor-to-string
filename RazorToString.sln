@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30413.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sharp.RazorToString", "src\Sharp.RazorToString.csproj", "{98DAE6D5-49A6-4DC1-AA47-7A3A560C1809}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.RazorEmailTemplate", "samples\Sample.RazorEmailTemplate\Sample.RazorEmailTemplate.csproj", "{24F28383-7007-4988-97FD-5B74630005C5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{98DAE6D5-49A6-4DC1-AA47-7A3A560C1809}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98DAE6D5-49A6-4DC1-AA47-7A3A560C1809}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98DAE6D5-49A6-4DC1-AA47-7A3A560C1809}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98DAE6D5-49A6-4DC1-AA47-7A3A560C1809}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24F28383-7007-4988-97FD-5B74630005C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24F28383-7007-4988-97FD-5B74630005C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24F28383-7007-4988-97FD-5B74630005C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24F28383-7007-4988-97FD-5B74630005C5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1F06BFB9-E4CC-4B0C-814C-1C1B7E58B522}
+	EndGlobalSection
+EndGlobal
