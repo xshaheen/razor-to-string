@@ -13,6 +13,7 @@ namespace Sample.RazorEmailTemplate
             services.AddRazorToString(config => config.ViewsPath = "/Emails");
 
             services.AddControllersWithViews();
+            services.AddRazorPages();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -21,10 +22,7 @@ namespace Sample.RazorEmailTemplate
 
             app.UseRouting();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
     }
 }
