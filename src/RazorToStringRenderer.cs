@@ -34,7 +34,27 @@ namespace Sharp.RazorToString
             _services   = services;
         }
 
-        public Task<string> RenderAsync(RazorViewModel view) => RenderAsync(view.Path, view);
+        public async Task<string> RenderAsync<TModel>(TModel viewModel) where TModel : RazorViewModel
+        {
+            var actionContext = _GetActionContext();
+            var view          = _FindView(actionContext, viewModel.Path);
+
+            await using var output = new StringWriter();
+
+            var viewDictionary = new ViewDataDictionary<TModel>(viewModel.ViewData) { Model = viewModel };
+
+            var viewContext = new ViewContext(
+                actionContext,
+                view,
+                viewDictionary,
+                new TempDataDictionary(actionContext.HttpContext, _tempData),
+                output,
+                new HtmlHelperOptions());
+
+            await view.RenderAsync(viewContext);
+
+            return output.ToString();
+        }
 
         public async Task<string> RenderAsync<TModel>(string viewName, TModel model)
         {
