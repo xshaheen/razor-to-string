@@ -8,17 +8,8 @@
     <AssemblyName>Sharp.RazorToString</AssemblyName>
     <PackageId>Sharp.RazorToString</PackageId>
     <Description>Render razor template to string.</Description>
-    <PackageTags>RazorToString, Razor, Email, RazorEmailTemplate, ToString</PackageTags>
-    <RepositoryUrl>https://github.com/xshaheen/RazorToString</RepositoryUrl>
-    <PackageProjectUrl>https://github.com/xshaheen/RazorToString</PackageProjectUrl>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <NeutralLanguage>en</NeutralLanguage>
-
-    <Company>xshaheen.com</Company>
-    <Authors>Mahmoud Shaheen</Authors>
-    <Copyright>Copyright (c) contributors 2020</Copyright>
-    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <Version>1.0.1</Version>
+    <PackageTags>Sharp.RazorToString, RazorToString, Razor, Email, RazorEmailTemplate, ToString</PackageTags>
+    <MinVerTagPrefix>v</MinVerTagPrefix>
   </PropertyGroup>
 
   <ItemGroup>

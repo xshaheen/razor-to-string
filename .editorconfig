@@ -1,0 +1,15 @@
+root=true
+
+[*]
+charset=utf-8
+indent_style=space
+indent_size=2
+tab_width=2
+end_of_line=crlf
+insert_final_newline=true
+trim_trailing_whitespace=true
+
+[*.{c,c++,cc,cginc,compute,cp,cpp,cs,cu,cuh,cxx,h,hh,hlsl,hlsli,hlslinc,hpp,hxx,inc,inl,ino,ipp,mpp,tpp,usf,ush,vb,proto}]
+indent_style=space
+indent_size=4
+tab_width=4

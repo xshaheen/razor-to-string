@@ -18,7 +18,7 @@ services.AddRazorToString(config => config.ViewsPath = "/Emails");
 
 - Create The model and template in the specified path.
 
-![Image](./model.png)
+![Image](./assets/model.png)
 
 - Model must be derived from `RazorViewModel`
 
