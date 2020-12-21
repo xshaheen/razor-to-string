@@ -4,21 +4,18 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Sharp.RazorToString;
 
-namespace Sample.RazorEmailTemplate
-{
-    public class Startup
-    {
-        public void ConfigureServices(IServiceCollection services)
-        {
+namespace Sample.RazorEmailTemplate {
+    public class Startup {
+        public void ConfigureServices(IServiceCollection services) {
             services.AddRazorToString(config => config.ViewsPath = "/Emails");
 
             services.AddControllersWithViews();
             services.AddRazorPages();
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-        {
-            if (env.IsDevelopment()) app.UseDeveloperExceptionPage();
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env) {
+            if (env.IsDevelopment())
+                app.UseDeveloperExceptionPage();
 
             app.UseRouting();
 

@@ -11,6 +11,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 ProjectSection(SolutionItems) = preProject
 	README.md = README.md
 	.gitignore = .gitignore
+	.editorconfig = .editorconfig
+	.gitattributes = .gitattributes
+	dotnet-tools.json = dotnet-tools.json
+	global.json = global.json
+	nuget.config = nuget.config
+	LICENSE = LICENSE
 EndProjectSection
 EndProject
 Global

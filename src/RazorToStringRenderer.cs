@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -13,35 +13,35 @@ using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Options;
 
-namespace Sharp.RazorToString
-{
-    public class RazorToStringRenderer
-    {
-        private readonly IRazorViewEngine     _viewEngine;
-        private readonly ITempDataProvider    _tempData;
-        private readonly IServiceProvider     _services;
+namespace Sharp.RazorToString {
+    public class RazorToStringRenderer {
         private readonly RazorToStringOptions _options;
+        private readonly IServiceProvider     _services;
+        private readonly ITempDataProvider    _tempData;
+        private readonly IRazorViewEngine     _viewEngine;
 
         public RazorToStringRenderer(
             IOptions<RazorToStringOptions> options,
             IRazorViewEngine viewEngine,
             ITempDataProvider tempData,
-            IServiceProvider services)
-        {
-            _options    = options.Value;
+            IServiceProvider services
+        ) {
+            _options = options.Value;
             _viewEngine = viewEngine;
-            _tempData   = tempData;
-            _services   = services;
+            _tempData = tempData;
+            _services = services;
         }
 
-        public async Task<string> RenderAsync<TModel>(TModel viewModel) where TModel : RazorViewModel
-        {
-            var actionContext = _GetActionContext();
+        public async Task<string> RenderAsync<TModel>(TModel viewModel)
+            where TModel : RazorViewModel {
+            var actionContext = GetActionContext();
             var view          = _FindView(actionContext, viewModel.Path);
 
             await using var output = new StringWriter();
 
-            var viewDictionary = new ViewDataDictionary<TModel>(viewModel.ViewData) { Model = viewModel };
+            var viewDictionary = new ViewDataDictionary<TModel>(viewModel.ViewData) {
+                Model = viewModel,
+            };
 
             var viewContext = new ViewContext(
                 actionContext,
@@ -56,9 +56,8 @@ namespace Sharp.RazorToString
             return output.ToString();
         }
 
-        public async Task<string> RenderAsync<TModel>(string viewName, TModel model)
-        {
-            var actionContext = _GetActionContext();
+        public async Task<string> RenderAsync<TModel>(string viewName, TModel model) {
+            var actionContext = GetActionContext();
             var view          = _FindView(actionContext, viewName);
 
             await using var output = new StringWriter();
@@ -66,8 +65,11 @@ namespace Sharp.RazorToString
             var viewContext = new ViewContext(
                 actionContext,
                 view,
-                new ViewDataDictionary<TModel>(new EmptyModelMetadataProvider(),
-                    new ModelStateDictionary()) { Model = model },
+                new ViewDataDictionary<TModel>(
+                    new EmptyModelMetadataProvider(),
+                    new ModelStateDictionary()) {
+                    Model = model,
+                },
                 new TempDataDictionary(actionContext.HttpContext, _tempData),
                 output,
                 new HtmlHelperOptions());
@@ -77,8 +79,7 @@ namespace Sharp.RazorToString
             return output.ToString();
         }
 
-        private IView _FindView(ActionContext actionContext, string viewName)
-        {
+        private IView _FindView(ActionContext actionContext, string viewName) {
             var getViewResult = viewName.StartsWith("/")
                 ? _viewEngine.GetView(null, viewName, true)
                 : _viewEngine.GetView(null, Path.Combine(_options.ViewsPath, viewName), true);
@@ -96,15 +97,18 @@ namespace Sharp.RazorToString
 
             var errorMessage = string.Join(
                 Environment.NewLine,
-                new[] { $"Unable to find view '{viewName}'. The following locations were searched:" }
+                new[] {
+                        $"Unable to find view \"{viewName}\". The following locations were searched:",
+                    }
                     .Concat(searchedLocations));
 
             throw new InvalidOperationException(errorMessage);
         }
 
-        private ActionContext _GetActionContext()
-        {
-            var httpContext = new DefaultHttpContext { RequestServices = _services };
+        private ActionContext GetActionContext() {
+            var httpContext = new DefaultHttpContext {
+                RequestServices = _services,
+            };
 
             return new ActionContext(httpContext, new RouteData(), new ActionDescriptor());
         }
