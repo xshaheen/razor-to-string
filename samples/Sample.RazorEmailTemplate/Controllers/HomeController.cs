@@ -5,9 +5,9 @@ using Sharp.RazorToString;
 
 namespace Sample.RazorEmailTemplate.Controllers {
     public class HomeController : Controller {
-        private readonly RazorToStringRenderer _razor;
+        private readonly IRazorToStringRenderer _razor;
 
-        public HomeController(RazorToStringRenderer razor) => _razor = razor;
+        public HomeController(IRazorToStringRenderer razor) => _razor = razor;
 
         [HttpGet("/")]
         public async Task<ActionResult> Get() {

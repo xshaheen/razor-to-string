@@ -53,12 +53,12 @@ public class EmailTemplate : RazorViewModel
 </div>
 ```
 
-- To use the template render it using `RazorToStringRenderer` service
+- To use the template render it using `IRazorToStringRenderer` service
 
 ```csharp
-private readonly RazorToStringRenderer _razor;
+private readonly IRazorToStringRenderer _razor;
 
-public HomeController(RazorToStringRenderer razor) => _razor = razor;
+public HomeController(IRazorToStringRenderer razor) => _razor = razor;
 
 [HttpGet("/")]
 public async Task<ActionResult> SendEmail()

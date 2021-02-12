@@ -8,7 +8,7 @@ namespace Sharp.RazorToString {
             Action<RazorToStringOptions> configureOptions
         ) {
             services.Configure(configureOptions);
-            services.AddTransient<RazorToStringRenderer>();
+            services.AddTransient<IRazorToStringRenderer, RazorToStringRenderer>();
 
             return services;
         }

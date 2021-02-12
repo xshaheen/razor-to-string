@@ -14,7 +14,7 @@ using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Options;
 
 namespace Sharp.RazorToString {
-    public class RazorToStringRenderer {
+    internal class RazorToStringRenderer : IRazorToStringRenderer {
         private readonly RazorToStringOptions _options;
         private readonly IServiceProvider     _services;
         private readonly ITempDataProvider    _tempData;
@@ -35,7 +35,7 @@ namespace Sharp.RazorToString {
         public async Task<string> RenderAsync<TModel>(TModel viewModel)
             where TModel : RazorViewModel {
             var actionContext = GetActionContext();
-            var view          = _FindView(actionContext, viewModel.Path);
+            var view          = FindView(actionContext, viewModel.Path);
 
             await using var output = new StringWriter();
 
@@ -58,7 +58,7 @@ namespace Sharp.RazorToString {
 
         public async Task<string> RenderAsync<TModel>(string viewName, TModel model) {
             var actionContext = GetActionContext();
-            var view          = _FindView(actionContext, viewName);
+            var view          = FindView(actionContext, viewName);
 
             await using var output = new StringWriter();
 
@@ -79,7 +79,7 @@ namespace Sharp.RazorToString {
             return output.ToString();
         }
 
-        private IView _FindView(ActionContext actionContext, string viewName) {
+        private IView FindView(ActionContext actionContext, string viewName) {
             var getViewResult = viewName.StartsWith("/")
                 ? _viewEngine.GetView(null, viewName, true)
                 : _viewEngine.GetView(null, Path.Combine(_options.ViewsPath, viewName), true);
